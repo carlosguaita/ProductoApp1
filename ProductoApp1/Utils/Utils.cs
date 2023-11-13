@@ -23,7 +23,15 @@ namespace ProductoApp1.Utils
                 Nombre = "Producto 2",
                 Descripcion="Descripcion 2",
                 cantidad=2
+            },
+
+             new Producto{
+                IdProducto=3,
+                Nombre = "Producto 3000",
+                Descripcion="Descripcion 3000",
+                cantidad=400
             }
+
 
         };
 

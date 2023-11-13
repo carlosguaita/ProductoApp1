@@ -6,7 +6,7 @@
         {
             InitializeComponent();
 
-            MainPage = new ProductoPage();
+            MainPage = new NuevoProductoPage();
         }
     }
 }
