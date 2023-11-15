@@ -26,5 +26,7 @@ public partial class NuevoProductoPage : ContentPage
 
         Utils.Utils.ListaProductos.Add(producto);
 
+        await Navigation.PopAsync();
+
     }
 }
