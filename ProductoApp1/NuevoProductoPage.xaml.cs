@@ -5,27 +5,46 @@ namespace ProductoApp1;
 
 public partial class NuevoProductoPage : ContentPage
 {
+    private Producto _producto;
 	public NuevoProductoPage()
 	{
 		InitializeComponent();
+        
 	}
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _producto = BindingContext as Producto;
+        if (_producto != null)
+        {
+            Nombre.Text = _producto.Nombre;
+            cantidad.Text = _producto.cantidad.ToString();
+            Descripcion.Text = _producto.Descripcion;
+        }
+    }
 
     private async void OnClickGuardarNuevoProducto(object sender, EventArgs e)
     {
-        var toast = CommunityToolkit.Maui.Alerts.Toast.Make("Click en guardar prodcuto", ToastDuration.Short, 14);
-
-        await toast.Show();
-
-        Producto producto = new Producto
+        if (_producto != null)
         {
-            IdProducto = 0,
-            Nombre = Nombre.Text,
-            Descripcion = Descripcion.Text,
-            cantidad = Int32.Parse(cantidad.Text)
-        };
+            _producto.Nombre=Nombre.Text;
+            _producto.cantidad = Int32.Parse(cantidad.Text);
+            _producto.Descripcion = Descripcion.Text;
+        }
+        else
+        {
 
-        Utils.Utils.ListaProductos.Add(producto);
+            Producto producto = new Producto
+            {
+                IdProducto = 0,
+                Nombre = Nombre.Text,
+                Descripcion = Descripcion.Text,
+                cantidad = Int32.Parse(cantidad.Text)
+            };
 
+            Utils.Utils.ListaProductos.Add(producto);
+        }
         await Navigation.PopAsync();
 
     }

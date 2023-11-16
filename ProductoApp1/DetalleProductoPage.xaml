@@ -25,9 +25,21 @@
                     Text="Descripcion"
                     FontSize="18"/>
         </StackLayout>
-        <Button Text="Volver"
-                Clicked="OnClickVolver"
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Borrar"
+                Clicked="OnClickBorrar"
                 FontSize="20"
-                Margin="5"/>
+                Margin="5"
+                HorizontalOptions="FillAndExpand"
+                BackgroundColor="Red"/>
+            <Button Text="Editar"
+                Clicked="OnClickEditar"
+                FontSize="20"
+                Margin="5"
+                HorizontalOptions="FillAndExpand"
+                TextColor="Black"
+                BackgroundColor="Orange"/>
+        </StackLayout>
+        
     </VerticalStackLayout>
 </ContentPage>
