@@ -6,21 +6,25 @@ using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Alerts;
 using System.Collections.ObjectModel;
 using ProductoApp1.Models;
+using ProductoApp1.Services;
 
 namespace ProductoApp1;
 
 public partial class ProductoPage : ContentPage
 {
-	public ProductoPage()
+    private readonly APIService _APIService;
+	public ProductoPage(APIService apiservice)
     {
         InitializeComponent();
+        _APIService = apiservice;
        
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
-        var productos = new ObservableCollection<Producto>(Utils.Utils.ListaProductos);
+        List<Producto> ListaProducto = await _APIService.GetProductos();
+        var productos = new ObservableCollection<Producto>(ListaProducto);
         listaProductos.ItemsSource = productos;
     }
 
