@@ -34,7 +34,7 @@ public partial class ProductoPage : ContentPage
 
         //await toast.Show();
 
-       await Navigation.PushAsync(new NuevoProductoPage());
+       await Navigation.PushAsync(new NuevoProductoPage(_APIService));
     }
 
     private async void OnClickShowDetails(object sender, SelectedItemChangedEventArgs e)
@@ -43,7 +43,7 @@ public partial class ProductoPage : ContentPage
 
         await toast.Show();
         Producto producto = e.SelectedItem as Producto;
-        await Navigation.PushAsync(new DetalleProductoPage()
+        await Navigation.PushAsync(new DetalleProductoPage(_APIService)
         {
             BindingContext = producto,
         });
