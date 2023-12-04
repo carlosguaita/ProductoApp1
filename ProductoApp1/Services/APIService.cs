@@ -18,7 +18,7 @@ namespace ProductoApp1.Services
         public APIService()
         {
 
-            _baseUrl = "https://apiproductos20231127081334.azurewebsites.net";
+            _baseUrl = "https://apiproductos20231127163857.azurewebsites.net";
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(_baseUrl);
         }
@@ -44,6 +44,20 @@ namespace ProductoApp1.Services
                 return producto;
             }
             return new Producto();
+        }
+
+        public async Task<User> PostUser(User user)
+        {
+
+            var content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("/api/User/", content);
+            if (response.IsSuccessStatusCode)
+            {
+                var json_response = await response.Content.ReadAsStringAsync();
+                User user2 = JsonConvert.DeserializeObject<User>(json_response);
+                return user2;
+            }
+            return null;
         }
 
         public async Task<List<Producto>> GetProductos()

@@ -12,9 +12,15 @@
                    HeightRequest="50"
                    WidthRequest="50"
                    />
-            <Label Text="ProductoApp"
+            <Label x:Name="Username"
+                    Text="ProductoApp"
                    FontSize="30"
                    TextColor="White"/>
+            <Button Text="Salir"
+                FontSize="15"
+                Margin="5"
+                    Clicked="OnClickLogout"/>
+            
         </HorizontalStackLayout>
         <Button Text="Nuevo Producto"
                 FontSize="15"
